@@ -1,24 +1,27 @@
-theme="catppuccin_mocha"
+theme = "catpuccin_my"
 
 [editor]
-line-number = "relative"
 mouse = false
 bufferline = "always"
 color-modes = true
 auto-save = true
+scrolloff = 10
+auto-format = true
 
 [editor.statusline]
 left = ["mode", "spinner", "file-name"]
 center = ["version-control"]
-right = ["diagnostics", "selections", "position", "file-encoding", "file-line-ending", "file-type"]
+right = [
+  "diagnostics",
+  "selections",
+  "position",
+  "file-encoding",
+  "file-line-ending",
+  "file-type",
+]
 mode.normal = "NORMAL"
 mode.insert = "INSERT"
 mode.select = "SELECT"
-
-[editor.cursor-shape]
-insert = "bar"
-normal = "block"
-select = "underline"
 
 [editor.file-picker]
 hidden = false
@@ -33,5 +36,22 @@ enable = true
 [keys.normal]
 "ö" = { d = "goto_next_diag", D = "goto_last_diag", f = "goto_next_function", t = "goto_next_class", a = "goto_next_parameter", c = "goto_next_comment", T = "goto_next_test", p = "goto_next_paragraph", g = "goto_next_change", G = "goto_last_change", space = "add_newline_below" }
 "ä" = { d = "goto_prev_diag", D = "goto_first_diag", f = "goto_prev_function", t = "goto_prev_class", a = "goto_prev_parameter", c = "goto_prev_comment", T = "goto_prev_test", p = "goto_prev_paragraph", g = "goto_prev_change", G = "goto_first_change", space = "add_newline_above" }
-C-s = ":w" # Maps Ctrl-s to the typable command :w which is an alias for :write (save file)
-C-o = ":open ~/.config/helix/config.toml" # Maps Ctrl-o to opening of the helix config file
+"esc" = [":format", ":write", "collapse_selection"] # For quick savingsdsad
+"space" = { "space" = [
+  "add_newline_below",
+  "move_visual_line_down",
+], "q" = ":buffer-close" }
+
+
+C-o = [
+  ":config-reload",
+  ":config-open",
+] # Maps Ctrl-o to opening of the helix config file
+
+C-f = [":open ~/AppData/Roaming/helix/languages.toml"]
+S-h = [":bp"]
+S-l = [":bn"]
+A-w = ["select_mode", "move_next_word_start"]
+
+[keys.select]
+"esc" = ["collapse_selection", "normal_mode"]

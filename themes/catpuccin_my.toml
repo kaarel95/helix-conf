@@ -1,3 +1,4 @@
 inherits = "catppuccin_mocha"
-
+"ui.linenr" = { fg = "green" }
+"ui.background" = {}
 "diagnostic.error" = { fg = "errorfg", bg = "errorbg", underline = { color = "red" } }
